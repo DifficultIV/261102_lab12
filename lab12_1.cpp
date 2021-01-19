@@ -17,3 +17,24 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+void stat(const double a[],int N,double b[]){
+    double sumA ,sumH,sum,SD;
+    double max = a[0], min = a[0],sumG = 1,sumS = 0;
+    for(int i = 0; i < N; i++) sum += a[i];
+    double mean = sum/N;
+    for(int i = 0; i < N; i++){
+        if(a[i] > max) max = a[i];
+        if(a[i] < min) min = a[i];
+        sumA += a[i];
+        sumS += pow(a[i]-mean,2); 
+        sumG *= a[i];
+        sumH += 1/a[i]; 
+    }
+    SD = sumS/N;
+    b[0] = sumA/N;
+    b[1] = sqrt(SD);
+    b[2] = pow(sumG,1.0/N);
+    b[3] = N/sumH;
+    b[4] = max;
+    b[5] = min;
+}
